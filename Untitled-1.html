@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <style>
+    body {
+      background-color: #e8e3e3d7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: #6b5a5a;
+      background-image: url('https://universitykart.b-cdn.net/Content/upload/admin/rqduhudn.rad.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #4b4646;
+      border-radius: 5px;
+      padding: 8px 0;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>karpagama log in Page</h2>
+    <div id="error-msg" class="error">Please enter both email and password.</div>
+    <form id="login-form">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Log In</button>
+    </form>
+    <button id="logout-btn" style="display:none; margin-top:20px;">Log Out</button>
+  </div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('error-msg');
+      const logoutBtn = document.getElementById('logout-btn');
+      const loginForm = document.getElementById('login-form');
+      if (!email || !password) {
+        errorMsg.style.display = 'block';
+      } 
+      else
+       {
+        errorMsg.style.display = 'none';
+        alert('Login successful!');
+        loginForm.style.display = 'none';
+        logoutBtn.style.display = 'block';
+      }
+    });
+    document.getElementById('logout-btn').addEventListener('click', function() {
+      document.getElementById('login-form').reset();
+      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('logout-btn').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
